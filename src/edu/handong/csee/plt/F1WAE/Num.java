@@ -1,4 +1,4 @@
-package edu.handong.csee.plt.ast;
+package edu.handong.csee.plt.F1WAE;
 
 public class Num extends AST {
 	String num = "0";

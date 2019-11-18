@@ -1,6 +1,6 @@
 package edu.handong.csee.plt;
 
-import edu.handong.csee.plt.ast.AST;
+import edu.handong.csee.plt.F1WAE.AST;
 
 public class Main {
 	
@@ -8,8 +8,13 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		
 		// This is just an example code. Use args to get -p option and actuall code from CLI
-		String exampleCode = "{+ {+ 2 {+ 3 4}} {+ 1 2}}";
+		 //String exampleCode = "{with {a 3} {+ a 4}}";
+		String exampleCode = "{deffun {identity x} x}";
+		//String exampleCode = "{with {x {+ 1 2}}{+ x {- 2 x}}}}";
+		//String exampleCode = "{with {x {+ 1 2}} {+ x x}}"; 
+		// **스페이스로 sub expression구분하기 때문에 띄어쓰기 잘해서 넣어줘야 함.**
 		
 		// Parser
 		Parser parser = new Parser();
@@ -22,10 +27,11 @@ public class Main {
 			System.out.println(ast.getASTCode());
 		
 		// interpreter
-		Interpreter interpreter = new Interpreter();
+		//Interpreter interpreter = new Interpreter();
 		
-		String result = interpreter.interp(ast);
+		//인터프리터실행시킬떄 이것만 해주면 됨!  
+		//String result = interpreter.interp(ast);
 		
-		System.out.println(result);
+		//System.out.println(result);//
 	}
 }
