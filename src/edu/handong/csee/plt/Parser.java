@@ -32,13 +32,17 @@ public class Parser {
 		if(subExpressions.get(0).equals("with")) {
 			ArrayList<String> subExWAE = splitExpressionAsSubExpressions(subExpressions.get(1));
 			
-			return new With(parse(subExWAE.get(0)), parse(subExWAE.get(1)), parse(subExpressions.get(2)));
+			return new With(subExWAE.get(0), parse(subExWAE.get(1)), parse(subExpressions.get(2)));
 		}
 		// If the type is FunDef, use not parse but parserFD.
 		if(subExpressions.get(0).equals("deffun")) {
 			ArrayList<String> subExWAE = splitExpressionAsSubExpressions(subExpressions.get(1));
 			
 			return new fundef(subExWAE.get(0), subExWAE.get(1), parse(subExpressions.get(2)));
+		}
+		if(subExpressions.size() == 2) {
+			//parse 하면 AST되고 parse안하면 문자열임.  
+			return new App(parse(subExpressions.get(0)), parse(subExpressions.get(1)));
 		}
 		
 		return null;
