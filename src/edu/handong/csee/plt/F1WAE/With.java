@@ -24,6 +24,6 @@ public class With extends AST{
 	}
 	// 파싱한 with 구문 출력.  
 	public String getASTCode() {
-		return "(with " + getName() + " " + named_expr.getASTCode() + " " + body.getASTCode() + ")";
+		return "(with '" + getName() + " " + named_expr.getASTCode() + " " + body.getASTCode() + ")";
 	}
 }

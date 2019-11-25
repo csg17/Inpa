@@ -14,7 +14,7 @@ public class Main {
 		//String exampleCode = "{deffun {identity x} x}";
 		//String exampleCode = "{with {x {+ 1 2}}{+ x {- 2 x}}}}";
 		//String exampleCode = "{with {x {+ 1 2}} {+ x x}}";
-		String exampleCode = "{with {x 3} {with {f {fun {y} {+ x y}}} {with {x 5} {f 4}}}}";
+		String exampleCode = "{with {f {fun {y} {+ x y}}} {with {x 5} {f 4}}}";
 		// **스페이스로 sub expression구분하기 때문에 띄어쓰기 잘해서 넣어줘야 함.**
 		
 		// Parser

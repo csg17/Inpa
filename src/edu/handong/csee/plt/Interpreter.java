@@ -20,7 +20,9 @@ public class Interpreter {
 		}
 		if(ast instanceof With) {
 			With with = (With)ast; // with (id a)(num 7)(add (id a)(num 3))
-		    return interp( subst(with.getBody(), with.getName(), interp(with.getNamedExpr())) );
+			
+			return interp(subst(with.getBody(), with.getName(), interp(with.getNamedExpr())) );
+			
 		}
 		if(ast instanceof Fun) {
 			return ast.getASTCode();
@@ -70,13 +72,28 @@ public class Interpreter {
 			//System.out.println(((Idtf) ast).getIdtf() + " " +(((Idtf) idtf).getIdtf()) );
 			
 			if(((Idtf) ast).getIdtf().equals(idtf)) {
-			Num newval = new Num(val);
+				//** 여기에 val가 숫자가 될수도있고, 함수형 변수가 될수도 있다.
+				AST newval = new Idtf(val);
 				return newval;
 			}
 			else {
 				return ast; 
 			}
 		}
+		// App case
+		if(ast instanceof App) {
+			subst(((App) ast).getFtn(), idtf, val);
+			subst(((App) ast).getArg(), idtf, val);
+		}
+		if(ast instanceof Fun) {
+			if(((Fun) ast).getParam().equals(idtf)) {
+				return ast;
+			}
+			else {
+				subst(((Fun) ast).getFunBody(), idtf, val);
+			}
+		}
+		System.out.println("Y");
 		return null;
 	}
 }

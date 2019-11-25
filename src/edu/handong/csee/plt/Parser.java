@@ -44,6 +44,10 @@ public class Parser {
 			//parse 하면 AST되고 parse안하면 문자열임.  
 			return new App(parse(subExpressions.get(0)), parse(subExpressions.get(1)));
 		}
+		//Fun
+		if(subExpressions.get(0).equals("fun")) {
+			return new Fun(splitExpressionAsSubExpressions(subExpressions.get(1)).get(0), parse(subExpressions.get(2)));
+		}
 		
 		return null;
 	}
